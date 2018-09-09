@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Header from './Header';
 import DataGrid from './datagrid';
+
 
 class Moviegrid extends Component{
 
@@ -29,7 +29,7 @@ class Moviegrid extends Component{
 	dataSort(columnName){
 		console.log("data sort ", columnName);
 		let movies = this.state.movies;
-		if(movies != null && movies.length > 0){
+		if(movies !== null && movies.length > 0){
 			let sortedMovies = movies.sort((a, b) => {
 				if(a[columnName] < b[columnName]){
 					return a-b;
@@ -43,22 +43,24 @@ class Moviegrid extends Component{
 			});
 		}
 	}
+
 	render(){
 		if(this.state.apicall){
-			let res = this.fetchData();
-		}		
-		console.log("in moviegrid render")
+			this.fetchData();
+		}
 		return(
 				<div className="container">
 					<div className="row">
 						<h1>Grid Sample</h1>
 					</div>
-					<table className="table table-striped">
-						<Header dataSort={this.dataSort}/>
-						<DataGrid result={this.state.movies}/>
-					</table>
+					<div id="table_box_bootstrap">
+						<table className="table table-striped">
+							<Header dataSort={this.dataSort}/>
+							<DataGrid result={this.state.movies}/>
+						</table>
+					</div>
 				</div>
-			)
+			);
 	}
 }
 
