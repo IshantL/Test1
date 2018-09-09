@@ -8,13 +8,12 @@ class Header extends Component{
 		this.sort=this.sort.bind(this);
 	}
 	sort(coloumnName){
-		console.log(coloumnName);
 		this.props.dataSort(coloumnName);
 	}
 	render(){
 		let conf = config.headerConfig;
-		let renderHeader=conf.map(obj => {
-			 return <HeaderColumn sort={this.sort} columnName={obj.displayName} />;
+		let renderHeader = conf.map((obj, index)=> {
+			 return <HeaderColumn key={index} sort={this.sort} columnName={obj.displayName} />;
 		});
 
 		return(
