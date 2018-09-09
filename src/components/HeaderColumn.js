@@ -2,18 +2,16 @@ import React, { Component } from 'react';
 
 class HeaderColumn extends Component{
 
-	constructor(props){
-		super(props);
-	}
-
+	sortClick(coloumnName){
+		console.log("in sort values"+coloumnName);
+		this.props.sort(coloumnName);
+	};
 	render(){
-		console.log("hfhfhfhfhfh")
 		return(
-				<div className='header-column'>
-				console.log("jdhjdgjdgh",this.props.columnName)
+				<th onClick={() => this.sortClick(this.props.columnName)}>
 					{this.props.columnName}
-				</div>
-			)
+				</th>
+			);
 	}
 }
 export default HeaderColumn;
