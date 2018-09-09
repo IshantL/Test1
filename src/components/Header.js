@@ -1,35 +1,29 @@
 import React, { Component } from 'react';
 import HeaderColumn from './HeaderColumn';
+import config from '../config';
 
 class Header extends Component{
-
 	constructor(props){
 		super(props);
+		this.sort=this.sort.bind(this);
 	}
-	
-	headerConfig=[{
-		name: 'Genre',
-		width: ''
-	},
-	{
-		name: 'Language',
-		width: ''
-	}];
-
-
+	sort(coloumnName){
+		console.log(coloumnName);
+		this.props.dataSort(coloumnName);
+	}
 	render(){
-	
-		let renderHeader=this.headerConfig.map(obj => {
-			 return <HeaderColumn columnName={obj.name} columnWidth={obj.width}/>
+		let conf = config.headerConfig;
+		let renderHeader=conf.map(obj => {
+			 return <HeaderColumn sort={this.sort} columnName={obj.displayName} />;
 		});
 
 		return(
-				<div className='header-row'>
-					{renderHeader}
-				</div>
+				<thead>
+					<tr>
+						{renderHeader}
+					</tr>
+				</thead>
 			)
 	}
 }
 export default Header;
-
-
