@@ -1,31 +1,38 @@
 import React, { Component } from 'react';
 import config from '../config';
+import Pagination from '../pagination';
 
 class DataGrid extends Component{
 
   constructor(props){
 		super(props);
-		this.createRow=this.createRow.bind(this);
     this.getRows=this.getRows.bind(this);
+    this.paginationMovies = this.paginationMovies.bind(this);
 	}
-
-  createRow(a, b){
-    return <div className='col-2'>{a[b.columnName]}</div>;
-  }
 
   getRows(a){
     let conf = config.headerConfig;
-    return conf.map(b => <td>{a[b.columnName]}</td>);
+    return conf.map((b, index) => <td key={index}>{a[b.columnName]}</td>);
 
   }
+  paginationMovies (){
+    let pagei = Pagination;
+    let box = pagei({
+        table: document.getElementById("table_box_bootstrap").getElementsByTagName("table")[0],
+        box_mode: "list",
+    });
+    box.className = "box";
+    document.getElementById("table_box_bootstrap").appendChild(box);
+  }
+  componentDidUpdate(){
+    this.paginationMovies();
+  }
   render () {
-    console.log("data grid render");
-    let data = this.props.result;
-    let rows, resultRow;
+    let data = this.props.result, rows;
     if(data != null && data.length > 0){
-      rows = data.map((a) => {
+      rows = data.map((a, index) => {
         let obj = this.getRows(a);
-        return <tr>{obj}</tr>;
+        return <tr key={index}>{obj}</tr>;
       });
     }
     return (<tbody>{rows}</tbody>);
