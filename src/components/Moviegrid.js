@@ -8,7 +8,8 @@ class Moviegrid extends Component{
 	constructor(props){
 		super(props);
 		this.state={
-			movies: []
+			movies: [],
+			apicall:true
 		};
 		this.fetchData = this.fetchData.bind(this);
 		this.dataSort = this.dataSort.bind(this);
@@ -19,7 +20,8 @@ class Moviegrid extends Component{
 			.then(response => response.json())
 			.then(data => {
 				this.setState({
-					movies: data
+					movies: data,
+					apicall:false
 				})
 			});
 	}
@@ -30,9 +32,9 @@ class Moviegrid extends Component{
 		if(movies != null && movies.length > 0){
 			let sortedMovies = movies.sort((a, b) => {
 				if(a[columnName] < b[columnName]){
-					return -1;
+					return a-b;
 				}else if(a[columnName] > b[columnName]){
-					return 1;
+					return b-a;
 				}else {
 					return 0;
 				}
@@ -43,7 +45,10 @@ class Moviegrid extends Component{
 		}
 	}
 	render(){
-		let res = this.fetchData();
+		if(this.state.apicall){
+			let res = this.fetchData();
+		}		
+		console.log("in moviegrid render")
 		return(
 				<div className="container">
 					<div className="row">

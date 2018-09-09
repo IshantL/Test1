@@ -7,9 +7,10 @@ class HeaderColumn extends Component{
 		this.props.sort(coloumnName);
 	};
 	render(){
+		var sortIcon = <i className="fa fw"></i>;
 		return(
 				<th onClick={() => this.sortClick(this.props.columnName)}>
-					{this.props.columnName}
+					{this.props.columnName}{sortIcon}
 				</th>
 			);
 	}

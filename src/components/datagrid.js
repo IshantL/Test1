@@ -19,6 +19,7 @@ class DataGrid extends Component{
 
   }
   render () {
+    console.log("data grid render");
     let data = this.props.result;
     let rows, resultRow;
     if(data != null && data.length > 0){
