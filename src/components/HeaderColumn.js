@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'font-awesome/css/font-awesome.min.css';
 
 class HeaderColumn extends Component{
 
@@ -7,10 +8,10 @@ class HeaderColumn extends Component{
 		this.props.sort(coloumnName);
 	};
 	render(){
-		var sortIcon = <i className="fa fw"></i>;
 		return(
 				<th onClick={() => this.sortClick(this.props.columnName)}>
-					{this.props.columnName}{sortIcon}
+					<span>{this.props.columnName}</span>
+					<i className="fa fa-sort"></i>
 				</th>
 			);
 	}

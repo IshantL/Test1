@@ -36,7 +36,6 @@ class Moviegrid extends Component{
 				}else if(a[columnName] > b[columnName]){
 					return b-a;
 				}else {
-					return 0;
 				}
 			});
 			this.setState({
