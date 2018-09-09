@@ -91,6 +91,7 @@ var pagination = function paginator(config) {
                 var li = document.createElement("li");
                 var a  = document.createElement("a");
                 a.href = "#";
+                a.className = 'page-link';
                 a.innerHTML = symbol;
                 a.addEventListener("click", function (event) {
                     event.preventDefault();
@@ -99,7 +100,7 @@ var pagination = function paginator(config) {
                 }, false);
                 li.appendChild(a);
 
-                var classes = [];
+                var classes = ['page-item'];
                 if (disabled) {
                     classes.push("disabled");
                 }
