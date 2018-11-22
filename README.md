@@ -1,3 +1,12 @@
+scope
+reduxvstate mgm
+funtion 
+react 
+iife
+negative no array ..find max sum 
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
